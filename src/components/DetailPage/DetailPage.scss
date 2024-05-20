@@ -1,0 +1,291 @@
+@import '../../mixin.scss';
+
+.detail-page {
+    background-color: gray;
+    font-family: "Roboto", sans-serif;
+    height: 100vh;
+
+    .addres {
+        display: flex;
+        align-items: center;
+        margin: 20px 0 20px 20px;
+
+        .addres__part {
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: white;
+            margin: 0 10px 0 0;
+            transition-duration: 1s;
+
+            &:hover {
+                color: black;
+                transition-duration: 1s;
+            }
+        }
+    }
+
+    .detail {
+        display: flex;
+        justify-content: center;
+        background-color: gray;
+
+        @include onPhone {
+            display: grid;
+            grid-template-columns: repeat(3, 90px);
+            justify-content: space-around;
+            gap: 24px;
+        }
+
+        @include onTablet {
+            display: grid;
+            grid-template-columns: repeat(8, 70px);
+        }
+
+        @include onDesctop {
+            display: grid;
+            grid-template-columns: repeat(14, 65px);
+        }
+
+        .detail__title {
+            text-transform: uppercase;
+
+            @include onPhone {
+                grid-row: 1;
+                grid-column: 1/4;
+            }
+
+            @include onTablet {
+                display: none;
+            }
+        }
+
+        .detail__photo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin: 10px;
+            flex-wrap: wrap;
+
+            @include onPhone {
+                justify-content: space-between;
+                grid-row: 3;
+                grid-column: 1/4;
+                margin: 0;
+                height: 370px;
+            }
+
+            @include onTablet {
+                align-items: center;
+                justify-content: center;
+                grid-column: 1/4;
+                grid-row: 1;
+            }
+
+            @include onDesctop {
+                grid-column: 1/3;
+                grid-row: 1;
+                height: 500px;
+            }
+
+            .detail__photo {
+                cursor: pointer;
+                object-fit: cover;
+                transition-duration: 2s;
+                border-radius: 10px;
+
+                @include onPhone {
+                    flex-direction: row;
+                    width: 120px;
+                    height: 120px;
+                }
+
+                @include onTablet {
+                    width: 120px;
+                    height: 120px;
+                }
+
+                @include onDesctop {
+                    width: 140px;
+                    height: 120px;
+                }
+
+                &:last-child {
+                    @include onPhone {
+                        display: none;
+                    }
+
+                    @include onDesctop {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .detail__main-photo-box {
+            display: flex;
+            justify-content: center;
+
+            @include onPhone {
+                grid-row: 2;
+                grid-column: 1/4;
+            }
+
+            @include onTablet {
+                grid-row: 1;
+                grid-column: 4/9;
+            }
+
+            @include onDesctop {
+                grid-row: 1;
+                grid-column: 4/9;
+            }
+
+            .detail__main-photo {
+                margin: 0 40px 0 0;
+                flex-shrink: 1;
+                flex-grow: 1;
+                border-radius: 10px;
+                object-fit: cover;
+
+                @include onPhone {
+                    width: 320px;
+                    height: 370px;
+                    justify-content: center;
+                    margin: 0;
+                }
+
+                @include onTablet {
+                    width: 360px;
+                    height: 400px;
+                }
+
+                @include onDesctop {
+                    width: 580px;
+                    height: 550px;
+                }
+            }
+        }
+
+        .detail__describe {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: gray;
+
+            @include onPhone {
+                grid-column: 1/4;
+                grid-row: 4;
+               //font-size: 12px;
+            }
+
+            @include onTablet {
+                grid-row: 2;
+                grid-column: 2/8;
+            }
+
+            @include onDesctop {
+                grid-row: 1;
+                grid-column: 9/15;
+            }
+
+            .detail__describe-box {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .detail__name {
+
+                    @include onPhone {
+                        display: none;
+                    }
+
+                    @include onTablet {
+                        display: block;
+                    }
+                }
+            }
+
+            .detail__info {
+                text-transform: uppercase;
+                color: white;
+
+                @include onPhone {
+                    width: 165px;
+                    font-size: 12px;
+                }
+
+                @include onTablet {
+                    width: 500px;
+                    font-size: 20px;
+                }
+
+                @include onDesctop {
+                    font-size: 18px;
+                }
+            }
+
+            .detail__param {
+
+                @include onPhone {
+                    text-align: right;
+                    width: 350px;
+                    font-size: 12px;
+                }
+
+                @include onTablet {
+                    width: 500px;
+                    font-size: 20px;
+                }
+
+                @include onDesctop {
+                    font-size: 18px;
+                }
+            }
+
+            .button-box {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                align-items: center;
+
+                @include onPhone {
+                    grid-column: 1/4;
+                    margin: 20px 0;
+                }
+
+                @include onTablet {
+                    grid-column: 5/8;
+                }
+
+                .detail__button {
+                    width: 176px;
+                    height: 40px;
+                    background-color: #313237;
+                    border-radius: 5px;
+                    border: none;
+                    text-transform: uppercase;
+                    color: white;
+                    border: none;
+                    cursor: pointer;
+                    transition-duration: 1s;
+
+                    &:active {
+                        background-color: red;
+                        color: black;
+                    }
+                }
+
+                .detail__button-cart {
+                    width: 40px;
+                    height: 40px;
+                    background-color: white;
+                    color: #313237;
+                    border: 1px solid #313237;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+@import './components/Basket/Basket.scss';
+@import './components/Category/Category.scss';
+@import './components/Contacts/Contacts.scss';
+@import './components/DetailPage/DetailPage.scss';
+@import './components/EmptyBox/EmptyBox.scss';
+@import './components/GoodsPage/GoodsPage.scss';
+@import './components/Header/Header.scss';
+@import './components/Home/Home.scss';
+@import './components/PhotoScroll/PhotoScroll.scss';
+@import './components/Repair/Repair.scss';
+@import './components/SortGoodsFile/SortGoodsFile.scss';
+
+
+* {
+    margin: 0;
+}
+
+.App {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: "Roboto", sans-serif;
+    background-color: gray;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.center {
+    text-align: center;
+}
+
+.main__bike-page-style {
+    background-color: gray;
+    width: 100%;
+}

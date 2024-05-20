@@ -1,0 +1,243 @@
+@import '../../mixin.scss';
+
+.orderInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: 100vh;
+    background-color: green;
+    color: white;
+    padding: 40px 0 0;
+    font-family: "Roboto", sans-serif;
+    border: 3px solid white;
+    
+    .orderInfo__icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .orderInfo__text {
+        text-align: center;
+        margin: 0 0 20px;
+        font-size: 20px;
+
+        .orderInfo__img {
+            width: 150px;
+            height: 150px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+    }
+
+    .orderInfo__button {
+        cursor: pointer;
+        color:  white;
+        background-color: green;
+        border: none;
+        padding: 10px;
+        width: 120px;
+        height: 40px;
+        border-radius: 10px;
+    
+        &-icon {
+            width: 30%;
+            height: 30px;
+        }
+    }
+}
+
+.main {
+    background-color: gray;
+    height: 100vh;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    max-width: 1519px;
+
+    @include onPhone {
+        display: grid;
+        grid-template-columns: repeat(3, 90px);
+        justify-content: space-around;
+        gap: 24px;
+    }
+
+    @include onTablet {
+        display: grid;
+        grid-template-columns: repeat(8, 70px);
+    }
+
+    @include onDesctop {
+        display: grid;
+        grid-template-columns: repeat(14, 65px);
+    }
+
+    .main__top-container {
+        display: flex;
+        background-color: gray;
+
+        @include onPhone {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            grid-column: 1/4;
+        }
+
+        @include onTablet {
+            grid-row: 1;
+            grid-column: 1/9;
+        }
+
+        @include onDesctop {
+            flex-direction: row;
+            align-items: start;
+            justify-content: space-around;
+            grid-column: 1/14;
+        }
+
+        .main__good {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 500;
+
+            @include onPhone {
+                width: 356px;
+                margin: 0 0 10px;
+            }
+
+            .good__container {
+                display: flex;
+                gap: 5px;
+                flex-shrink: inherit;
+                width: max-content;
+
+                .basket {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                    border: 1px solid white;
+                    margin: 0 0 5px;
+                    border-radius: 5px;
+                    padding: 5px;
+                    width: 420px;
+
+                    &:first-child {
+                        margin: 30px 0 0;
+                    }
+
+                    .basket__close-button {
+                        border: none;
+                        color: white;
+                        background-color: gray;
+                        border-radius: 50px;
+                        cursor: pointer;
+                    }
+
+                    .basket__photo {
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 5px;
+                    }
+
+                    .basket__text {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+    .payInfo {
+        border: 1px solid white;
+        height: max-content;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 30px;
+
+        @include onPhone {
+            width: 356px;
+            margin: 0 0 20px;
+            padding: 0;
+        }
+
+        @include onDesctop {
+            margin: 30px 0 0;
+        }
+
+        .payInfo__text {
+            text-align: center;
+        }
+
+        .payInfo__list {
+            padding: 0;
+            margin: auto;
+
+            .payInfo__name {
+                width: max-content;
+            }
+        }
+
+        .payInfo__receiver-box {
+            margin: 0 0 10px;
+
+            .payInfo__receiver {
+                text-align: left;
+            }
+        }
+    }
+
+    .input {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        margin: 30px;
+
+        @include onPhone {
+            align-items: center;
+            margin: 0;
+            width: 356px;
+        }
+
+        @include onDesctop {
+            margin: 30px 0 0;
+        }
+
+        .basket__input-unvisible {
+            display: none;
+        }
+
+        .basket__input {
+            background-color: gray;
+            height: 40px;
+            width: 300px;
+            border: 1px solid white;
+            border-radius: 10px;
+
+            &::placeholder {
+                color: white;
+            }
+        }
+
+        .input__error {
+            border: 3px solid red;
+        }
+    }
+}
+
+.basket__empty-basket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: gray;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+
+    .basket__empty-basket-title {
+        margin: 0;
+        color: white;
+    }
+}

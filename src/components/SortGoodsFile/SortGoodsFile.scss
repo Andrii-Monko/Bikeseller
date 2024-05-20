@@ -1,0 +1,17 @@
+.sort__box {
+    display: flex;
+    gap: 20px;
+
+
+    .select {
+        height: 50px;
+        width: 190px;
+        border-radius: 5px;
+
+        .select__option {
+            padding: 5px;
+            margin: 10px;
+            color: gray;
+        }
+    }
+}

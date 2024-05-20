@@ -1,0 +1,33 @@
+@import '../../mixin.scss';
+
+.brand-list {
+    overflow: hidden;
+    margin: 20px 0 0 0;
+
+    .wrapper {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 350px;
+        animation: scroll 30s linear infinite;
+
+        .scroll-photo {
+            border-radius: 15px;
+
+            @include onPhone {
+                width: 250px;
+                height: 200px;
+            }
+
+            @include onDesctop {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    }
+
+    @keyframes scroll {
+        to {
+            translate: calc(-22 * 240px);
+        }
+    }
+}
