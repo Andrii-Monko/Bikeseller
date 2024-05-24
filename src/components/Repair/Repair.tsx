@@ -17,7 +17,7 @@ export const Repair = () => (
 
                 <div className='repair__container'>
                     <p className='repair__text'>
-                        Ремонта та обслуговування на вулиці  
+                        Ремонта та обслуговування на вулиці
                         <a
                             title="вулиця Кирилівська, 115/3, Київ, 02000"
                             href="https://maps.app.goo.gl/rgdU6dSdyUMMRL6q9"
@@ -40,10 +40,10 @@ export const Repair = () => (
                         Діагностика поломок та несправностей, поточне та повне ТО велосипедів, налаштування тормозів та передач, зборка велосипедів, консервація на сезонне зберігання
                     </p>
 
-                    <p  className='repair__describe'>
+                    <p className='repair__describe'>
                         Щоб отримати консультацію телефонуйте за номером: <br />
-                        <a href="tel:0995415470"  className='repair__describe'>0995415470</a> <br />
-                        <a href="tel:0635750161"  className='repair__describe'>0635750161</a> 
+                        <a href="tel:0995415470" className='repair__describe'>0995415470</a> <br />
+                        <a href="tel:0635750161" className='repair__describe'>0635750161</a>
                     </p>
                 </div>
             </div>
@@ -65,7 +65,7 @@ export const Repair = () => (
                     крок 3: <br />
                     Забрати готовий велосипед
                 </p>
-            </div> 
+            </div>
         </div>
     </div>
 )

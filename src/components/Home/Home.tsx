@@ -8,7 +8,8 @@ import { GoodsContext } from "../Context/Context";
 
 export const Home = () => {
     const { bikes } = useContext(GoodsContext)
-    const goods = bikes.sort((bike1, bike2) => bike1.ціна - bike2.ціна)
+    //const goods = bikes.sort((bike1, bike2) => bike1.ціна - bike2.ціна)
+    
     return (
         <>
             <Header />

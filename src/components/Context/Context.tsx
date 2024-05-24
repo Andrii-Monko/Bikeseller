@@ -11,8 +11,9 @@ type Param = {
     selectedParam: string | null,
     setSelectedGoods: (value: Bike[]) => void,
     setSelectedParam: (value: string | null) => void,
-    //goodsPerPage: number,
-    //setGoodsPerPage: (value: number) => void
+    goodsPerPage: number,
+    currentPage: number,
+    setCurrentPage: (value: number) => void
     mountain: Bike[],
     setMountain: (value: Bike[]) => void
 }
@@ -29,8 +30,9 @@ export const GoodsContext = React.createContext<Param>(
         selectedParam: null,
         setSelectedParam: () => { },
         setSelectedGoods: () => { },
-        //goodsPerPage: 0,
-        //setGoodsPerPage: () => { },
+        goodsPerPage: 0,
+        currentPage: 1,
+        setCurrentPage: () => { },
         mountain: [],
         setMountain: () => { },
     }
@@ -40,8 +42,9 @@ export const GoodsProvider: React.FC<Props> = ({ children }) => {
     const [bikes, setBikes] = useState([]);
     const [selectedGoods, setSelectedGoods] = useState(() => getInitialPhonesOnLoad())
     const [selectedParam, setSelectedParam] = useState<string | null>(null);
-    //const [goodsPerPage, setGoodsPerPage] = useState(8)
+    const [goodsPerPage, setGoodsPerPage] = useState(8)
     const [mountain, setMountain] = useState<Bike[]>([])
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         fetch('./bike.json')
@@ -57,8 +60,9 @@ export const GoodsProvider: React.FC<Props> = ({ children }) => {
                 selectedParam,
                 setSelectedParam,
                 setSelectedGoods,
-                //goodsPerPage,
-                //setGoodsPerPage,
+                goodsPerPage,
+                currentPage,
+                setCurrentPage,
                 mountain,
                 setMountain,
             }}

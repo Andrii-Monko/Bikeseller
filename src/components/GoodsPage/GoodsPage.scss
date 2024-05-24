@@ -100,14 +100,14 @@
                 margin: 30px 0 0 0;
                 transition-duration: 1s;
 
-                /* &:hover {
+                &:hover {
                     transition-duration: 1s;
                     background-color: red;
                     color: black;
                     font-weight: bold;
-                } */
+                }
 
-                &:active {
+                &:checked {
                     transition-duration: 1s;
                     background-color: darkred;
                     color: white;

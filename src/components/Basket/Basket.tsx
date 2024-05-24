@@ -31,6 +31,9 @@ export const Basket = () => {
     const orderInfo = () => {
         setOrderInformation(selectedGoods)
         setClose(true)
+        if (close === true) {
+
+        }
     }
 
     const deleteSelectedGoods = (key: string, query: string) => {
@@ -95,7 +98,6 @@ export const Basket = () => {
     }
     //#endregion
 
-    const names = choosedBike.map(data => data.назва)
     const deletedGoods = selectedGoods.map((data) => `${data.id}`);
 
     let price = 0;
@@ -103,7 +105,8 @@ export const Basket = () => {
     if (choosedBike.length > 0) {
         price = choosedBike.map(s => s.ціна).reduce((prev: number, next: number) => prev + next)
     }
-    
+
+
     return (
         <>
             <Header />
@@ -150,194 +153,195 @@ export const Basket = () => {
                 </div> : null
             }
 
-
             {choosedBike.length > 0 ?
-                <div className='main'>
-                    <div className='main__top-container'>
-                        <div className='main__good'>
-                            {choosedBike.map((select) =>
-                                <div
-                                    className='good__container'
-                                    key={select.id}
-                                >
+                    <div className='main'>
+
+
+                        <div className='main__top-container'>
+                            <div className='main__good'>
+                                {choosedBike.map((select) =>
                                     <div
-                                        className='basket'
+                                        className='good__container'
                                         key={select.id}
                                     >
-                                        <button
-                                            title='Видалити із корзини'
-                                            className='basket__close-button'
-                                            onClick={() => {
-                                                deleteSelectedGoods('id', select.id)
-                                            }}
+                                        <div
+                                            className='basket'
+                                            key={select.id}
                                         >
-                                            <IoCloseOutline />
-                                        </button>
+                                            <button
+                                                title='Видалити із корзини'
+                                                className='basket__close-button'
+                                                onClick={() => {
+                                                    deleteSelectedGoods('id', select.id)
+                                                }}
+                                            >
+                                                <IoCloseOutline />
+                                            </button>
 
-                                        <img
-                                            src={select.img}
-                                            alt="photo"
-                                            className='basket__photo'
-                                        />
+                                            <img
+                                                src={select.img}
+                                                alt="photo"
+                                                className='basket__photo'
+                                            />
 
-                                        <div>
-                                            <h4 className='basket__text'>
-                                                {select.назва}
-                                            </h4>
+                                            <div>
+                                                <h4 className='basket__text'>
+                                                    {select.назва}
+                                                </h4>
 
-                                            <h3 className='basket__text'>
-                                                {`${select.ціна}${'.00грн.'}`}
-                                            </h3>
+                                                <h3 className='basket__text'>
+                                                    {`${select.ціна}${'.00грн.'}`}
+                                                </h3>
+                                            </div>
                                         </div>
                                     </div>
+                                )}
+                            </div>
+
+                            <div className='payInfo'>
+                                <p className='payInfo__text'>
+                                    Для оформлення замовлення ви можете оплатити все замовлення одразу <br />
+
+                                    <h3 className='payInfo__receiver'>
+                                        {price}.00грн.  <br />
+                                    </h3>
+
+                                    <h4>
+                                        АБО
+                                    </h4>
+
+                                    внесити предоплату в розмірі <br />
+                                    1000 грн. <br />
+                                    та оплатити решту суми при отриманні товару <br />
+                                </p>
+                                <div className='payInfo__receiver-box'>
+                                    <p className='payInfo__receiver'>
+                                        Отримувач: ФОП Смілянський Назарій Юрійович
+                                    </p>
+
+                                    <p className='payInfo__receiver'>
+                                        Назва банку: АТ "ПУМБ"
+                                    </p>
+
+                                    <p className='payInfo__receiver'>
+                                        ЄДРПОУ: 3742601393
+                                    </p>
+
+                                    <p className='payInfo__receiver'>
+                                        IBAN: UA753348510000000026002210461
+                                    </p>
                                 </div>
-                            )}
-                        </div>
 
-                        <div className='payInfo'>
-                            <p className='payInfo__text'>
-                                Для оформлення замовлення ви можете оплатити все замовлення одразу <br />
-
-                                <h3 className='payInfo__receiver'>
-                                    {price}.00грн.  <br />
-                                </h3>
-
-                                <h4>
-                                    АБО
-                                </h4>
-
-                                внесити предоплату в розмірі <br />
-                                1000 грн. <br />
-                                та оплатити решту суми при отриманні товару <br />
-                            </p>
-                            <div className='payInfo__receiver-box'>
-                                <p className='payInfo__receiver'>
-                                    Отримувач: ФОП Смілянський Назарій Юрійович
-                                </p>
-
-                                <p className='payInfo__receiver'>
-                                    Назва банку: АТ "ПУМБ"
-                                </p>
-
-                                <p className='payInfo__receiver'>
-                                    ЄДРПОУ: 3742601393
-                                </p>
-
-                                <p className='payInfo__receiver'>
-                                    IBAN: UA753348510000000026002210461
+                                <p className='payInfo__text'>
+                                    !!! ОБОВ'ЯЗКОВО ВКАЖІТЬ В ПРИЗНАЧЕНІ ПЛАТЕЖУ  <br />
+                                    "ОПЛАТА ЗА ЗАМОВЛЕННЯ № {orderNumber}"
                                 </p>
                             </div>
 
-                            <p className='payInfo__text'>
-                                !!! ОБОВ'ЯЗКОВО ВКАЖІТЬ В ПРИЗНАЧЕНІ ПЛАТЕЖУ  <br /> 
-                                "ОПЛАТА ЗА ЗАМОВЛЕННЯ № {orderNumber}"
-                            </p>
+                            <form className='input'>
+                                <input
+                                    required
+                                    value={selectedGoods.map(choseBike => choseBike.id)}
+                                    id='bike'
+                                    type="text"
+                                    placeholder='Ваше велосипед'
+                                    className='basket__input-unvisible'
+                                />
+
+                                <input
+                                    value={customerInfo}
+                                    onChange={(event) => { setCustomerInfo(event.target.value) }}
+                                    required
+                                    id='name'
+                                    type="text"
+                                    placeholder='Ім`я Прізвище'
+                                    className={classNames('basket__input', { 'input__error': hasCustomerInfoError })}
+                                />
+
+                                <input
+                                    value={phoneInfo}
+                                    onChange={(event) => { setPhoneInfo(event.target.value) }}
+                                    required
+                                    id='phone'
+                                    type="tel"
+                                    placeholder='(000) 000 00 00'
+                                    className={classNames('basket__input', { 'input__error': phoneError })}
+                                />
+
+                                <input
+                                    value={emailInfo}
+                                    onChange={(event) => { setEmailInfo(event.target.value) }}
+                                    required
+                                    id='email'
+                                    type='email'
+                                    placeholder='Е-mail'
+                                    className={classNames('basket__input', { 'input__error': emailError })}
+                                />
+
+                                <input
+                                    value={cityInfo}
+                                    onChange={(event) => { setCityInfo(event.target.value) }}
+                                    required
+                                    id='city'
+                                    type="text"
+                                    placeholder='Найкраще в світі місто ...'
+                                    className={classNames('basket__input', { 'input__error': hasCityError })}
+                                />
+
+                                <input
+                                    value={postInfo}
+                                    onChange={(event) => { setPostInfo(event.target.value) }}
+                                    required
+                                    id='nova'
+                                    type="number"
+                                    placeholder='Відділення Нової пошти'
+                                    className={classNames('basket__input', { 'input__error': hasPostError })}
+                                />
+
+                                <input
+                                    type='text'
+                                    id="message"
+                                    placeholder='Ваш коментар'
+                                    className='basket__input'
+                                />
+
+                                <input
+                                    id='order'
+                                    type="text"
+                                    value={`${'замовлення №'} ${orderNumber}`}
+                                    placeholder={`${'замовлення №'} ${orderNumber}`}
+                                    className='basket__input-unvisible'
+                                />
+
+                                <input
+                                    type="text"
+                                    id='price'
+                                    value={`${price}${'.00грн'}`}
+                                    className='basket__input-unvisible'
+                                />
+
+                                <button
+                                    className='basket__input'
+                                    onClick={() => {
+                                        handleSubmit()
+                                    }}
+                                >
+                                    Оформити замовлення
+                                </button>
+
+                            </form>
                         </div>
+                    </div> :
 
-                        <form className='input'>
-                            <input
-                                required
-                                value={selectedGoods.map(choseBike => choseBike.id)}
-                                id='bike'
-                                type="text"
-                                placeholder='Ваше велосипед'
-                                className='basket__input-unvisible'
-                            />
-
-                            <input
-                                value={customerInfo}
-                                onChange={(event) => { setCustomerInfo(event.target.value) }}
-                                required
-                                id='name'
-                                type="text"
-                                placeholder='Ім`я Прізвище'
-                                className={classNames('basket__input', { 'input__error': hasCustomerInfoError })}
-                            />
-
-                            <input
-                                value={phoneInfo}
-                                onChange={(event) => { setPhoneInfo(event.target.value) }}
-                                required
-                                id='phone'
-                                type="tel"
-                                placeholder='(000) 000 00 00'
-                                className={classNames('basket__input', { 'input__error': phoneError })}
-                            />
-
-                            <input
-                                value={emailInfo}
-                                onChange={(event) => { setEmailInfo(event.target.value) }}
-                                required
-                                id='email'
-                                type='email'
-                                placeholder='Е-mail'
-                                className={classNames('basket__input', { 'input__error': emailError })}
-                            />
-
-                            <input
-                                value={cityInfo}
-                                onChange={(event) => { setCityInfo(event.target.value) }}
-                                required
-                                id='city'
-                                type="text"
-                                placeholder='Найкраще в світі місто ...'
-                                className={classNames('basket__input', { 'input__error': hasCityError })}
-                            />
-
-                            <input
-                                value={postInfo}
-                                onChange={(event) => { setPostInfo(event.target.value) }}
-                                required
-                                id='nova'
-                                type="number"
-                                placeholder='Відділення Нової пошти'
-                                className={classNames('basket__input', { 'input__error': hasPostError })}
-                            />
-
-                            <input
-                                type='text'
-                                id="message"
-                                placeholder='Ваш коментар'
-                                className='basket__input'
-                            />
-
-                            <input
-                                id='order'
-                                type="text"
-                                value={`${'замовлення №'} ${orderNumber}`}
-                                placeholder={`${'замовлення №'} ${orderNumber}`}
-                                className='basket__input-unvisible'
-                            />
-
-                            <input
-                                type="text"
-                                id='price'
-                                value={`${price}${'.00грн'}`}
-                                className='basket__input-unvisible'
-                            />
-
-                            <button
-                                className='basket__input'
-                                onClick={() => {
-                                    handleSubmit()
-                                }}
-                            >
-                                Оформити замовлення
-                            </button>
-
-                        </form>
+                    <div className='basket__empty-basket'>
+                        <h1 className='basket__empty-basket-title'>
+                            На жаль Ваша <br />
+                            Корзина порожня!  <br />
+                            Давайте це виправимо <br />
+                            <FaArrowDown />
+                        </h1>
+                        <Category />
                     </div>
-                </div> :
-
-                <div className='basket__empty-basket'>
-                    <h1 className='basket__empty-basket-title'>
-                        На жаль Ваша <br />
-                        Корзина порожня!  <br />
-                        Давайте це виправимо <br />
-                        <FaArrowDown />
-                    </h1>
-                    <Category />
-                </div>
             }
         </>
 

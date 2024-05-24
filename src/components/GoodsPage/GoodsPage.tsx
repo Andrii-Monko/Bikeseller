@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { GoodsContext } from '../Context/Context';
 import { SortGoodsFile } from '../SortGoodsFile/SortGoodsFile';
 import React, { useContext, useState } from "react"
+import { GoCodeOfConduct } from 'react-icons/go';
 
 type Props = {
     goods: Bike[]
@@ -31,7 +32,7 @@ const sortGoods = (goods: Bike[], sortParam: string) => {
 //#endregion
 
 export const GoodsPage: React.FC<Props> = ({ goods }) => {
-    const { selectedParam, setSelectedGoods } = useContext(GoodsContext);
+    const { selectedParam, setSelectedGoods, bikes, goodsPerPage, currentPage } = useContext(GoodsContext);
 
     // #region ФІЛЬТРАЦІЯ І СОРТУВАННЯ ТОВАРУ
     const [query, setQuery] = useState('');            /* STATE ДЛЯ ПОШУКУ ТОВАРІВ */
@@ -46,7 +47,7 @@ export const GoodsPage: React.FC<Props> = ({ goods }) => {
     }
     //#endregion
 
-    //#region ДОБАВИТИ ТОВАРИ В КОРЗИНУ
+    // #region ДОБАВИТИ ТОВАРИ В КОРЗИНУ
     const addToBasket = (key: string, newValue: Bike) => {
         const goodsInBasket = JSON.parse(localStorage.getItem(key) || "[]")
         localStorage.setItem(key, JSON.stringify([...goodsInBasket, newValue]))
@@ -58,7 +59,10 @@ export const GoodsPage: React.FC<Props> = ({ goods }) => {
     }
     //#endregion
 
-    const currentGoods = sortGoods(filteredGoods, selectedParam as string)
+    const lastGoodsIndex = currentPage * goodsPerPage;
+    const firstGoodsIndex = lastGoodsIndex - goodsPerPage;
+    const paginationArr = filteredGoods.slice(firstGoodsIndex, lastGoodsIndex);
+    const currentGoods = sortGoods(paginationArr, selectedParam as string);
 
     return (
         <>
@@ -134,7 +138,6 @@ export const GoodsPage: React.FC<Props> = ({ goods }) => {
                                 Купити
                             </button>
                         </div>
-
                     </div>
                 )}
             </div>
